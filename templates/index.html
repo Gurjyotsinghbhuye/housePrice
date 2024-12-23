@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h3 class="text-center">House Price Prediction</h3>
+            <form method="POST" action="/predict">
+                <div class="form-group">
+                    <label for="area">Area (sq. ft.)</label>
+                    <input type="number" class="form-control" id="area" name="area" required>
+                </div>
+                <div class="form-group">
+                    <label for="bedrooms">Bedrooms</label>
+                    <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
+                </div>
+                <div class="form-group">
+                    <label for="bathrooms">Bathrooms</label>
+                    <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
+                </div>
+                <div class="form-group">
+                    <label for="stories">Stories</label>
+                    <input type="number" class="form-control" id="stories" name="stories" required>
+                </div>
+                <div class="form-group">
+                    <label for="parking">Parking Spaces</label>
+                    <input type="number" class="form-control" id="parking" name="parking" required>
+                </div>
+                <div class="form-group">
+                    <label>Main Road</label><br>
+                    <input type="radio" name="mainroad" value="yes" required> Yes
+                    <input type="radio" name="mainroad" value="no"> No
+                </div>
+                <div class="form-group">
+                    <label>Guest Room</label><br>
+                    <input type="radio" name="guestroom" value="yes" required> Yes
+                    <input type="radio" name="guestroom" value="no"> No
+                </div>
+                <div class="form-group">
+                    <label>Basement</label><br>
+                    <input type="radio" name="basement" value="yes" required> Yes
+                    <input type="radio" name="basement" value="no"> No
+                </div>
+                <div class="form-group">
+                    <label>Preferred Area</label><br>
+                    <input type="radio" name="prefarea" value="yes" required> Yes
+                    <input type="radio" name="prefarea" value="no"> No
+                </div>
+                <div class="form-group">
+                    <label>Hot Water Heating</label><br>
+                    <input type="radio" name="hotwaterheating" value="yes" required> Yes
+                    <input type="radio" name="hotwaterheating" value="no"> No
+                </div>
+                <div class="form-group">
+                    <label>Air Conditioning</label><br>
+                    <input type="radio" name="airconditioning" value="yes" required> Yes
+                    <input type="radio" name="airconditioning" value="no"> No
+                </div>
+                <div class="form-group">
+                    <label for="furnishingstatus">Furnishing Status</label>
+                    <select class="form-control" id="furnishingstatus" name="furnishingstatus" required>
+                        <option value="unfurnished">Unfurnished</option>
+                        <option value="semi-furnished">Semi-furnished</option>
+                        <option value="furnished">Furnished</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Predict Price</button>
+            </form>
+            {% if predicted_price %}
+                <h4 class="text-center mt-4">{{ predicted_price }}</h4>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
